@@ -28,10 +28,10 @@ public class Remove_Zero_Sum_Consecutive_Nodes_From_Linked_List_1171 {
 			prefixsum += head.val;
 			map.put(prefixsum, head);
 			head = head.next;
-		} // map [(1, 1), (0, -3), (3, 3), (4, 1)]
+		} // map [()]
 			// prefixSum = 4
 			// head = null
-		head = startnode;
+		head = startnode; // head = 0
 		prefixsum = 0;
 		while (head != null) {
 			prefixsum += head.val;
