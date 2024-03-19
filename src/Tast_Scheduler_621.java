@@ -16,19 +16,20 @@ public class Tast_Scheduler_621 {
 		 * => Thêm các tiến trình tiến trình thế chỗ idel để giảm thiểu thời gian nghỉ
 		 * và thay thế vào đó là tiến trình
 		 */
+
 		Arrays.sort(freq);
-		int chunk = freq[25] - 1;
-		int idle = chunk * n; // tính thoi gian idel dài nhất có thể có
+		int chunk = freq[25] - 1; // lấy tấn số lớn nhất và nhân với n để ra số điểm nghỉ tối đa, (-1 vì dụ như là
+									// A _ _ _ A _ _ _ A => thì nó có số điểm nghỉ là (freq - 1) * n)
+		int idle = chunk * n; // tính thời gian idle dài nhất có thể có
 		for (int i = 24; i >= 0; i--) {
 			idle -= Math.min(chunk, freq[i]); // nếu có các process khác với các
 		}
-		System.out.println(idle);
 		return idle < 0 ? tasks.length : tasks.length + idle;
 	}
 
 	public static void main(String[] args) {
-		char[] tasks = { 'A', 'A', 'A', 'B', 'B', 'B' };
-		int n = 1;
+		char[] tasks = { 'A', 'A', 'A', 'A', 'A', 'B', 'B', 'B', 'B', 'C', 'C', 'C' };
+		int n = 3;
 		System.out.println(leastInterval(tasks, n));
 	}
 }
